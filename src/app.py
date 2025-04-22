@@ -103,10 +103,6 @@ def signup_for_activity(activity_name: str, email: str):
     # Validate email is not empty
     if not email:
         raise HTTPException(status_code=400, detail="Email cannot be empty")
-    # Validate email is not already signed up
-    for activity in activities.values():
-        if email in activity["participants"]:
-            raise HTTPException(status_code=400, detail="Email already signed up for another activity")
     # Validate activity exists
     if activity_name not in activities:
         raise HTTPException(status_code=404, detail="Activity not found")
